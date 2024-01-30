@@ -29,7 +29,19 @@ const taskController = {
     }
   },
   // Obtener Todas las tareas
-
+  getAllTasks: async () => {
+    try {
+      // Utilizar el método find de Mongoose para obtener todos las tareas de la base de datos
+      const tasks = await Task.find();
+      // Responder con las tareas encontradas y el código 200 (OK)
+      res.status(200).json(tasks);
+    } catch (error) {
+      // Manear cualquier error y responder con un menbsaje de error y el código de estado 500 (Interval Server Error)
+      res.status(500).json({
+        message: error.message
+      });
+    }
+  },
   // Obtener una Tarea por ID
 
   // Actualizar una Tarea
