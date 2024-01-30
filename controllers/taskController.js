@@ -29,7 +29,7 @@ const taskController = {
     }
   },
   // Obtener Todas las tareas
-  getAllTasks: async () => {
+  getAllTasks: async (req, res) => {
     try {
       // Utilizar el método find de Mongoose para obtener todos las tareas de la base de datos
       const tasks = await Task.find();
