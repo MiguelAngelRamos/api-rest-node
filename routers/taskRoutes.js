@@ -7,4 +7,7 @@ router.post('/', taskController.createTask);
 
 // Obtener todas las tareas
 router.get('/', taskController.getAllTasks);
+
+// Obtener una tarea por ID
+router.get('/:id', taskController.getTaskById);
 module.exports = router;
