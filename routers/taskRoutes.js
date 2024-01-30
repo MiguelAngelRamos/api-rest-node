@@ -10,4 +10,8 @@ router.get('/', taskController.getAllTasks);
 
 // Obtener una tarea por ID
 router.get('/:id', taskController.getTaskById);
+
+// Actualizar una tarea por ID
+router.put('/:id', taskController.updateTask);
+
 module.exports = router;
