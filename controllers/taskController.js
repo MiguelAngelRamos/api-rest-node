@@ -43,7 +43,23 @@ const taskController = {
     }
   },
   // Obtener una Tarea por ID
+  getTaskById: async (req, res) => {
+    try {
+      // Utilizar el método findById de Mongoose para buscar una tarea por ID
+      const task = await Task.findById(req.params.id);
 
+      if(task) {
+        // Encontro la tarea 200 (OK)
+        res.status(200).json(task);
+      } else {
+        // SI la tarea no se encuentra, responder con el mensaje de error y el código de estado 404 (Not Found)
+        res.status(404).json({ message: "Tasks not found"});
+      }
+
+    } catch (error) {
+      res.status(500).json({message: error.message});
+    }
+  }
   // Actualizar una Tarea
 
   // Eliminar una tarea por ID
