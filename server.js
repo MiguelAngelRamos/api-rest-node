@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose'); // ORM
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
@@ -11,7 +12,7 @@ app.use(express.json());
 // Conexión hacia la base de datos MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Conectado a MongoDB'))
-  .catch(err => console.error('No se pudo conectar a MongoDB'), err);
+  .catch( () => console.error('No se pudo conectar a MongoDB'));
 
 
 const PORT = process.env.PORT || 8080;
