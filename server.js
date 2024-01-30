@@ -17,6 +17,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 // Registro de las rutas
+//* http://localhost:3000/api/tasks
 app.use('/api/tasks', taskRoutes);
 const PORT = process.env.PORT || 8080;
 
