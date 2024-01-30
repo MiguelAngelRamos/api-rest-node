@@ -59,9 +59,29 @@ const taskController = {
     } catch (error) {
       res.status(500).json({message: error.message});
     }
-  }
+  },
   // Actualizar una Tarea
+  updateTask: async (req, res) => {
+    try {
+      const { estado } = req.body;
+      // Verificar si el nuevo estado proporcionado esta dentro de los valores permitidos (enum)
+      if(!['pendiente', 'en progreso', 'completada'].includes(estado)) {
+        throw new Error("Estado no válido");
+      }
+      // Utilizar el método 'findByIdAndUpdate' de Mongoose para actualizar una tarea por su ID
+      // El tercer argumento {new: true } indica qeu se debe devolver la tarea actualizada en la respuesta
+      const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true});
 
+      if(updatedTask) {
+        // Si se actualiza la tarea, responder con la tarea actualizada y el codigo estado OK (200)
+        res.status(200).json(updatedTask);
+      } else {
+        res.status(404).json({ message: "Task not found"});
+      }
+    } catch(error) {
+      res.status(400).json({message: error.message});
+    }
+  },
   // Eliminar una tarea por ID
 };
 
