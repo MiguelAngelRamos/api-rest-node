@@ -37,4 +37,5 @@ const taskController = {
   // Eliminar una tarea por ID
 };
 
+module.exports = taskController;
 //* then y catch
