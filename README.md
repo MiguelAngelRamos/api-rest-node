@@ -15,7 +15,7 @@ Escrita en node, utilizando express
  npm install bcrypt -S
 ```
 
-## Ejemplo para crear un nuevo en la base de datos - POST
+## Ejemplo para crear un nueva tarea en la base de datos - POST
 
 ```json
 {
@@ -25,3 +25,23 @@ Escrita en node, utilizando express
   "fechaVencimiento": "2024-03-15"
 }
 ```
+
+## Ejemplo para registrar un usuario en la base de datos - POST
+
+```json
+{
+  "username":"sofia",
+  "email":"sofia@correo.com",
+  "password":"secreto"
+}
+```
+
+## Ejemplo para hacer login de un usuario en la base de datos - POST
+
+```json
+{
+  "email":"sofia@correo.com",
+  "password":"secreto"
+}
+```
+
