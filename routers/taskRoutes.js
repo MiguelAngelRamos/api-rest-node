@@ -14,4 +14,6 @@ router.get('/:id', taskController.getTaskById);
 // Actualizar una tarea por ID
 router.put('/:id', taskController.updateTask);
 
+// Eliminar una tarea por ID
+router.delete('/:id', taskController.deleteTask);
 module.exports = router;

@@ -83,6 +83,21 @@ const taskController = {
     }
   },
   // Eliminar una tarea por ID
+  //* findByIdAndDelete
+  deleteTask: async(req, res) => {
+    try {
+      const task = await Task.findByIdAndDelete(req.params.id);
+
+      if(task) {
+        // Si se elimina 200(OK)
+        res.status(200).json({message: 'Task successfully delete'});
+      } else {
+        res.status(404).json({message: 'Task not found'});
+      }
+    } catch (error) {
+      res.status(500).json({message: error.message});
+    }
+  }
 };
 
 module.exports = taskController;
