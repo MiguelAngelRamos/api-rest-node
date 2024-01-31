@@ -26,7 +26,7 @@ Escrita en node, utilizando express
 }
 ```
 
-## Ejemplo para registrar un usuario en la base de datos - POST
+## Ejemplo para registrar un usuario en la base de datos - POST http://localhost:3000/api/users/register
 
 ```json
 {
@@ -36,7 +36,7 @@ Escrita en node, utilizando express
 }
 ```
 
-## Ejemplo para hacer login de un usuario en la base de datos - POST
+## Ejemplo para hacer login de un usuario en la base de datos - POST http://localhost:3000/api/users/login
 
 ```json
 {
