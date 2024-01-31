@@ -1,5 +1,17 @@
 const Task = require('../models/Task');
 
+// Middlware de autorización
+const authorizeAdmin = (req, res, next) => {
+  const currentUser = req.user;
+  // Verificar si el usuario tiene el rol 'ADMIN'
+  if(currentUser && currentUser.roles.includes('ADMIN')) {
+    // Si el usuario es 'ADMIN', permitimos el acceso a la función updateTask 
+    next();
+  } else {
+    res.status(403).json({ message: ' No tienes permiso para editar esta tarea'});
+  }
+}
+
 const taskController = {
 
   // Crear una nueva tarea
@@ -61,7 +73,7 @@ const taskController = {
     }
   },
   // Actualizar una Tarea
-  updateTask: async (req, res) => {
+  updateTask: [authorizeAdmin, async (req, res) => {
     try {
       const { estado } = req.body;
       // Verificar si el nuevo estado proporcionado esta dentro de los valores permitidos (enum)
@@ -81,7 +93,7 @@ const taskController = {
     } catch(error) {
       res.status(400).json({message: error.message});
     }
-  },
+  }],
   // Eliminar una tarea por ID
   //* findByIdAndDelete
   deleteTask: async(req, res) => {
