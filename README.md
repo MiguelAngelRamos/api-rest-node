@@ -10,6 +10,9 @@ Escrita en node, utilizando express
  npm install nodemon -D
  npm install cors -S
  npm install dotenv -S
+
+ npm install jsonwebtoken -S
+ npm install bcrypt -S
 ```
 
 ## Ejemplo para crear un nuevo en la base de datos - POST
